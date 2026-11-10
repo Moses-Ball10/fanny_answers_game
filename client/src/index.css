@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", system-ui, sans-serif;
+  --font-display: "Lalezar", "Cairo", sans-serif;
+  --color-ink: #1b1035;
+  --color-plum: #2a1650;
+  --color-card: #351d63;
+  --color-sun: #ffd23f;
+  --color-pop: #ff5d8f;
+  --color-mint: #3ee8b5;
+}
+
+html, body, #root { min-height: 100%; }
+body {
+  background: radial-gradient(circle at 20% 0%, #3b1d73 0%, var(--color-ink) 55%) fixed;
+  color: #fff;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@utility btn {
+  @apply w-full rounded-2xl px-5 py-3.5 text-lg font-extrabold transition active:scale-[.97] disabled:opacity-40 disabled:pointer-events-none;
+}
+.btn-sun { @apply btn bg-sun text-ink shadow-[0_5px_0_#c99a00]; }
+.btn-pop { @apply btn bg-pop text-white shadow-[0_5px_0_#b8305b]; }
+.btn-ghost { @apply btn bg-white/10 text-white; }
+.input {
+  @apply w-full rounded-2xl bg-white/10 px-4 py-3 text-lg outline-none ring-2 ring-transparent focus:ring-sun placeholder:text-white/40;
+}
+.card { @apply rounded-3xl bg-card/80 p-5 shadow-xl ring-1 ring-white/10; }
+
+@keyframes pop-in { from { transform: scale(.6) rotate(-4deg); opacity: 0 } to { transform: none; opacity: 1 } }
+.pop-in { animation: pop-in .35s cubic-bezier(.2,1.6,.4,1) both; }
